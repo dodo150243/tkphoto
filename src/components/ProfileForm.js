@@ -3,13 +3,6 @@ import React, { useState, useEffect } from 'react'
 import { Container, Row, Card, Col, CardImg, CardGroup } from "reactstrap";
 import { IoLocationSharp,IoEarth} from 'react-icons/io5';
 
-
-
-// import { Table, Container, Row, Button } from "reactstrap";
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
-
-
 function ProfileForm({ username }) {
     const [search, setPhoto] = useState("");
     const [clientId, setClientId] = useState("z4MEN_-nG2OKrQiNRsHy39vww04sJGKcqXUX0COKcW8");
@@ -17,8 +10,8 @@ function ProfileForm({ username }) {
     const [submitted, setSubmitted] = useState(false);
 
     const searchPhotos = (event) => {
-        axios.get("https://api.unsplash.com/search/photos?page=1&query=" +
-            search + "&client_id=" + clientId).then((response) => {
+        axios.get(`https://api.unsplash.com/search/photos?page=1&query=
+        ${search}&client_id=${process.env.REACT_APP_CLIENT_ID}`).then((response) => {
 
                 setResult(response.data.results);
                 console.log(response);
@@ -31,21 +24,18 @@ function ProfileForm({ username }) {
     }, []);
 
     const newProduct = () => {
-        axios.get("https://api.unsplash.com/search/photos?page=1&query=" +
-            search + "&client_id=" + clientId).then((response) => {
+        axios.get(`https://api.unsplash.com/search/photos?page=1&query=
+        ${search}&client_id=${process.env.REACT_APP_CLIENT_ID}`).then((response) => {
 
                 setResult(response.data.results);
                 console.log(response);
             });
         setSubmitted(false);
     };
-
-
     const [profiles, setProfile] = useState([]);
-    //   const [submitted, setSubmitted] = useState(false);
+
     useEffect(() => {
-        // https://api.unsplash.com/search/users/?query=d&client_id=z4MEN_-nG2OKrQiNRsHy39vww04sJGKcqXUX0COKcW8
-        axios.get(`https://api.unsplash.com/search/users?page=1&query=${username}&client_id=${clientId}`)
+        axios.get(`https://api.unsplash.com/search/users?page=1&query=${username}&client_id=${process.env.REACT_APP_CLIENT_ID}`)
             .then((response) => {
                 setProfile(response.data.results);
                 console.log(response);

@@ -173,8 +173,19 @@ main {
   display: inline-grid;
   height: 30rem;
   margin-bottom: 10px;
- 
 }
+@media screen and (max-width: 768px) {
+  #card {
+    width: 18rem;
+    padding: 5px;
+    display: flex;
+    margin-left: 30px;
+    height: 30rem;
+    margin-bottom: 10px;
+  }
+  
+}
+
 #card-photo-list{
   width: 20rem;
   padding: 10px;

@@ -3,13 +3,14 @@ import Band from './BandForm';
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Card, Col, CardImg, CardGroup } from "reactstrap";
 import { getMetadata } from 'firebase/storage';
+
 // import '../css/templatemo-style.css';
 // import '../css/templatemo-misc.css';
 // import '../css/font-awesome.css';
 
 function Header() {
     const [search, setPhoto] = useState("");
-    const [clientId, setClientId] = useState("z4MEN_-nG2OKrQiNRsHy39vww04sJGKcqXUX0COKcW8");
+    //const [clientId, setClientId] = useState("z4MEN_-nG2OKrQiNRsHy39vww04sJGKcqXUX0COKcW8");
     const [result, setResult] = useState([]);
     const [submitted, setSubmitted] = useState(false);
 
@@ -27,8 +28,8 @@ function Header() {
     // })
 
     const searchPhotos = (event) => {
-        axios.get("https://api.unsplash.com/search/photos?page=1&query=" +
-            search + "&client_id=" + clientId).then((response) => {
+        axios.get(`https://api.unsplash.com/search/photos?per_page=30&query=
+            ${search}&client_id=${process.env.REACT_APP_CLIENT_ID}`).then((response) => {
 
                 setResult(response.data.results);
                 console.log(response);
@@ -41,8 +42,8 @@ function Header() {
     }, []);
 
     const newProduct = () => {
-        axios.get("https://api.unsplash.com/search/photos?page=1&query=" +
-            search + "&client_id=" + clientId).then((response) => {
+        axios.get(`https://api.unsplash.com/search/photos?per_page=30&query=
+        ${search}&client_id=${process.env.REACT_APP_CLIENT_ID}`).then((response) => {
 
                 setResult(response.data.results);
                 console.log(response);
@@ -89,11 +90,11 @@ function Header() {
                                 <li id="li" class="active"><a href="index.html">Home</a></li>
                                 {/* <li><a href="services.html">Services</a></li> */}
                                 <li id="li"><a href="#">Photos</a>
-                                    <ul>
+                                    {/* <ul>
                                         <li><a href="projects-2.html">Two Columns</a></li>
                                         <li><a href="projects-3.html">Three Columns</a></li>
                                         <li><a href="project-details.html">Project Single</a></li>
-                                    </ul>
+                                    </ul> */}
                                 </li>
 
                                 <li><a id="cont-li" href="contact.html">Contact</a></li>
@@ -113,11 +114,6 @@ function Header() {
                     <ul>
                         <li><a href="index.html">Home</a></li>
                         <li><a href="#">Photos</a>
-                            <ul>
-                                <li><a href="projects-2.html">Two Columns</a></li>
-                                <li><a href="projects-3.html">Three Columns</a></li>
-                                <li><a href="project-details.html">Project Single</a></li>
-                            </ul>
                         </li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
