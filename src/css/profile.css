@@ -1,0 +1,31 @@
+.Profile{
+    display: flex;
+    margin:20px 300px;
+}
+.Profile-img img{
+    width: 250px;
+   
+    border-radius: 50%;
+}
+.Profile-detail{
+    text-align: left;
+    padding: 5px 50px;
+}
+.Profile-detail p{
+    color: #000;
+    font-size:medium;
+}
+#location-url{
+    display: -webkit-box;
+}
+#location-url p{
+    padding-left: 5px;
+}
+
+#location-url p a:hover{
+    color: rgb(144, 117, 207);
+}
+#locat{
+   width: 20px;
+    height: 20px;
+}
